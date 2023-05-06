@@ -1099,7 +1099,14 @@
 #define CODE_VERSION "2022.02.20.01.N5NHJ"
 
 #include <avr/pgmspace.h>
-#include <EEPROM.h>
+
+//#ifdef FEATURE_EEPROM_E24C1024
+//  #include <EEPROM2.h>
+//#endif
+//#ifndef FEATURE_EEPROM_E24C1024
+  #include <EEPROM.h>
+//#endif
+
 #include <math.h>
 
 #include "rotator_hardware.h"
@@ -7463,7 +7470,7 @@ void write_settings_to_eeprom(){
     EEPROM.write(tle_file_eeprom_memory_area_start,0xFF);
 
     if (verbose){
-      control_port->print(tle_file_eeprom_memory_area_end-tle_file_eeprom_memory_area_start);
+      control_port->println(tle_file_eeprom_memory_area_end-tle_file_eeprom_memory_area_start);
       control_port->println(F(" bytes free"));
     }
 
@@ -15973,13 +15980,15 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
         // N5NHJ Send IP Address to control_port and Nextion
         if ((input_buffer[2] == 'I') && (input_buffer[3] == 'P')) {  // \?IP Ethernet_IP_Address
           strconditionalcpy(return_string,"\\!OKIP", include_response_code);
-          strcat(return_string, (String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3])).c_str());
-          #if defined(FEATURE_NEXTION_DISPLAY)
-            char workstring1[32] = "";
-            strcpy_P(workstring1,(const char*) F("vIPAddress.txt=\""));
-            strcat(workstring1, (String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3])).c_str());
-            strcat(workstring1,"\"");
-            sendNextionCommand(workstring1);
+          #if defined (FEATURE_ETHERNET)
+            strcat(return_string, (String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3])).c_str());
+            #if defined(FEATURE_NEXTION_DISPLAY)
+              char workstring1[32] = "";
+              strcpy_P(workstring1,(const char*) F("vIPAddress.txt=\""));
+              strcat(workstring1, (String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3])).c_str());
+              strcat(workstring1,"\"");
+              sendNextionCommand(workstring1);
+            #endif
           #endif // N5NHJ Send IP Address to control_port and Nextion
         }
 
@@ -19497,9 +19506,9 @@ void convert_polar_to_cartesian(byte coordinate_conversion,double azimuth_in,dou
     #endif
 
     if (load_hardcoded_tle == LOAD_HARDCODED_TLE){    // push a hardcoded TLE into the array position 0 and write to EEPROM     
-      strcpy_P(name,(const char*) F("AO7TEST"));  
-      strcpy_P(hardcoded_tle_line_1,(const char*) F("1 07530U 74089B   22048.56983860 -.00000047 "));  //2022-02-20
-      strcpy_P(hardcoded_tle_line_2,(const char*) F("2 07530 101.8912  28.1243 0011959 272.1572 198.3347 12.53652980162443"));     
+      strcpy_P(name,(const char*) F("ISS-N5NHJ"));  
+      strcpy_P(hardcoded_tle_line_1,(const char*) F("1 25544U 98067A   23120.23020652 -.00277946  00000-0 -50811-2 0  9992"));  //2023-05-01
+      strcpy_P(hardcoded_tle_line_2,(const char*) F("2 25544  51.6358 206.2040 0006258 287.6342 118.3601 15.49723358394358"));     
       sat.tle(name,hardcoded_tle_line_1,hardcoded_tle_line_2);
       #if defined(DEBUG_SATELLITE_TRACKING_LOAD)
         debug.print(name);

@@ -22,7 +22,7 @@
 #define button_cw 0              // N5NHJ DEFAULT: 41 NO NEEDED FOR NEXTION             // normally open button to ground for manual CW rotation (schematic pin: A2)
 #define button_ccw 0             // N5NHJ DEFAULT: 43 NO NEEDED FOR NEXTION             // normally open button to ground for manual CCW rotation (schematic pin: A3)
 #define serial_led 0             // LED blinks when command is received on serial port (set to 0 to disable)
-#define rotator_analog_az A0     // reads analog azimuth voltage from rotator - pin 4 on Yaesu connector
+#define rotator_analog_az A4     // reads analog azimuth voltage from rotator - pin 4 on Yaesu connector
 #define azimuth_speed_voltage 0  // optional - PWM output for speed control voltage feed into rotator (on continually unlike rotate_cw_pwm and rotate_ccw_pwm)
 #define overlap_led 0            // line goes active when azimuth rotator is in overlap (> 360 rotators)
 #define brake_az 0               // goes high to disengage azimuth brake (set to 0 to disable)
@@ -39,15 +39,15 @@
 
 /*----------- elevation pins --------------*/
 #ifdef FEATURE_ELEVATION_CONTROL
-  #define rotate_up 6               // goes high to activate rotator elevation up
-  #define rotate_down 7             // goes high to activate rotator elevation down
+  #define rotate_up 7               // goes high to activate rotator elevation up
+  #define rotate_down 6             // goes high to activate rotator elevation down
   #define rotate_up_or_down 0       // goes high when elevation up or down is activated
   #define rotate_up_pwm 0           // optional - PWM UP output - set to 0 to disable (must be PWM capable pin)
   #define rotate_down_pwm 0         // optional - PWM DOWN output - set to 0 to disable (must be PWM capable pin)
   #define rotate_up_down_pwm 0      // optional - PWM on both UP and DOWN (must be PWM capable pin)
   #define rotate_up_freq 0          // optional - UP variable frequency output
   #define rotate_down_freq 0        // optional - UP variable frequency output
-  #define rotator_analog_el A1      // reads analog elevation voltage from rotator
+  #define rotator_analog_el A5      // reads analog elevation voltage from rotator
   #define button_up 0                // N5NHJ DEFAULT: 45 NO NEEDED FOR NEXTION             // normally open button to ground for manual up elevation
   #define button_down 0              // N5NHJ DEFAULT: 47 NO NEEDED FOR NEXTION             // normally open button to ground for manual down rotation
   #define brake_el 0                // goes high to disengage elevation brake (set to 0 to disable)

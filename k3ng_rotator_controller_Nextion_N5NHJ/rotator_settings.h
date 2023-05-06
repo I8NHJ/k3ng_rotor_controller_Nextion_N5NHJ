@@ -30,9 +30,9 @@ You can tweak these, but read the online documentation!
 // or set via the \?AO (Aplha Oscar), \?AF, \?EO (Echo Oscar), \?EF commands 
 // these correspond with the analog input voltage
 //  a value of 1 is approximately 0 volts, a value of 1024 is approximately 5 volts (or 3.3 volts on some boards)
-#define ANALOG_AZ_FULL_CCW_EEPROM_INITIALIZE 1
+#define ANALOG_AZ_FULL_CCW_EEPROM_INITIALIZE 0 //N5NHJ
 #define ANALOG_AZ_FULL_CW_EEPROM_INITIALIZE 1023
-#define ANALOG_EL_FULL_DOWN_EEPROM_INITIALIZE 1
+#define ANALOG_EL_FULL_DOWN_EEPROM_INITIALIZE 0  //N5NHJ
 #define ANALOG_EL_FULL_UP_EEPROM_INITIALIZE 1023
 
 #define ANALOG_AZ_OVERLAP_DEGREES 540         // if overlap_led above is enabled, turn on overlap led line if azimuth is greater than this setting
@@ -112,8 +112,8 @@ You can tweak these, but read the online documentation!
 #define ENCODER_PRESET_TIMEOUT 5000
 
 // various code settings
-#define AZIMUTH_TOLERANCE 1.0 ////3.0          //N5NHJ=1//   // rotator will stop within X degrees when doing autorotation
-#define ELEVATION_TOLERANCE 0.1 //1.0
+#define AZIMUTH_TOLERANCE 0.5 ////3.0          //N5NHJ=0.5 for both //   // rotator will stop within X degrees when doing autorotation
+#define ELEVATION_TOLERANCE 0.5 //1.0
 
 #define OPERATION_TIMEOUT 120000        // timeout for any rotation operation in mS ; 120 seconds is usually enough unless you have the speed turned down
 #define MASTER_REMOTE_LINK_PING_TIME_MS 5000
@@ -346,9 +346,7 @@ You can tweak these, but read the online documentation!
 
 // Added in version 2020.06.20.01
 /// Relay module: SET INACTIVE TO HIGH, ACTIVE TO LOW
-/// H-BRIDGE SET BOTH TO HIGH
-///
-/// By N5NHJ
+/// H-BRIDGE SET BOTH TO HIGH By N5NHJ
 #define ROTATE_PIN_AZ_INACTIVE_VALUE HIGH
 #define ROTATE_PIN_AZ_ACTIVE_VALUE HIGH
 #define ROTATE_PIN_EL_INACTIVE_VALUE HIGH
@@ -357,7 +355,7 @@ You can tweak these, but read the online documentation!
 // Changed in 2020.06.26.02
 // Serial Port Settings
 #define CONTROL_PORT_MAPPED_TO &Serial     // change this line to map the control port to a different serial port (Serial1, Serial2, etc.)
-#define CONTROL_PORT_BAUD_RATE 9600
+#define CONTROL_PORT_BAUD_RATE 115200
 //#define REMOTE_PORT Serial3                 // used to control remote unit
 #define REMOTE_UNIT_PORT_BAUD_RATE 9600 
 #define GPS_PORT Serial1
@@ -398,7 +396,7 @@ You can tweak these, but read the online documentation!
 
 // Added / Updated in 2020.08.29.01
 #define SATELLITE_CALC_TIMEOUT_MS 10000
-#define SATELLITE_AOS_ELEVATION_MIN 0.0
+#define SATELLITE_AOS_ELEVATION_MIN 0
 #define SATELLITE_CALC_STAGE_1_RESOLUTION_SECS 120
 #define SATELLITE_CALC_STAGE_2_RESOLUTION_SECS 10
 #define SATELLITE_CALC_STAGE_3_RESOLUTION_SECS 1

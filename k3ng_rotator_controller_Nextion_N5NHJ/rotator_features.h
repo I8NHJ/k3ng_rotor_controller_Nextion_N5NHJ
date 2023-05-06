@@ -17,7 +17,7 @@
 #define FEATURE_GPS                       //N5NHJ//
 #define FEATURE_RTC_DS1307                //N5NHJ//
 // #define FEATURE_RTC_PCF8583
-#define FEATURE_ETHERNET                  //N5NHJ//
+// #define FEATURE_ETHERNET                  //N5NHJ//
 // #define FEATURE_STEPPER_MOTOR    // Requires TimerFive library to be copied to the Arduino libraries directory (If using OPTION_STEPPER_MOTOR_USE_TIMER_ONE_INSTEAD_OF_FIVE below, copy the TimeOne library)
 // #define FEATURE_AUTOCORRECT
 // #define FEATURE_TEST_DISPLAY_AT_STARTUP  
@@ -161,7 +161,7 @@
 // #define OPTION_REVERSE_EL_HH12_AS5045
 
 // #define FEATURE_POWER_SWITCH
-// #define OPTION_EXTERNAL_ANALOG_REFERENCE  //Activate external analog voltage reference (needed for RemoteQTH.com unit)
+#define OPTION_EXTERNAL_ANALOG_REFERENCE  //Activate external analog voltage reference (needed for RemoteQTH.com unit) N5NHJ
 // #define OPTION_SYNC_MASTER_CLOCK_TO_SLAVE        // use when GPS unit is connected to slave unit and you want to synchronize the master unit clock to the slave unit GPS clock
 // #define OPTION_SYNC_MASTER_COORDINATES_TO_SLAVE  // use when GPS unit is connected to slave unit and you want to synchronize the master unit coordinates to the slave unit GPS
 // #define OPTION_DISABLE_HMC5883L_ERROR_CHECKING
@@ -192,6 +192,8 @@
 // #define OPTION_CLI_VT100   // use VT100 terminal emulation
 
 #define OPTION_GPS_USE_TINY_GPS_LIBRARY               //N5NHJ// // For serial port based NMEA GPS units; serial port defined by GPS_PORT and GPS_PORT_BAUD_RATE in settings file
+
+// #define FEATURE_EEPROM_E24C1024
 
 // #define OPTION_DEPRECATED_NEXTION_INIT_CODE_1  // use only with VK4GHZ Nextion firmware versions previous to 2021-10-23
 // #define OPTION_DEPRECATED_NEXTION_INIT_CODE_2  // use only with VK4GHZ Nextion firmware versions previous to 2021-10-23
