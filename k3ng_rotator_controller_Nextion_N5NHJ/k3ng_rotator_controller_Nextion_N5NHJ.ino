@@ -13296,6 +13296,7 @@ int analogReadEnhanced(uint8_t pin){
   #ifdef OPTION_EXTERNAL_ANALOG_REFERENCE
     analogReference(EXTERNAL);
   #endif //OPTION_EXTERNAL_ANALOG_REFERENCE
+  /// Serial.println(String(analogRead(pin))); for calibration testing N5NHJ
   return analogRead(pin);
 
 }
