@@ -15469,50 +15469,50 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
     #if defined(FEATURE_SATELLITE_TRACKING)
 
       // case '&':
-
       // satellite_array_data_ready = 0;
       // control_port->println(F("satellite_array_data_ready = 0"));
       // break;
 
-      case '|':
-        if (input_buffer_index == 3){
-          x = (input_buffer[2] - 48);
-        } else {
-          if (input_buffer_index == 4){
-            x = ((input_buffer[2] - 48) * 10) + (input_buffer[3] - 48);
+        case '|':
+          if (input_buffer_index == 3){
+            x = (input_buffer[2] - 48);
           } else {
-            if (input_buffer_index == 5){
-              x = ((input_buffer[2] - 48) * 100) + ((input_buffer[3] - 48) * 10) + (input_buffer[4] - 48);              
+            if (input_buffer_index == 4){
+              x = ((input_buffer[2] - 48) * 10) + (input_buffer[3] - 48);
             } else {
-              x = 0;
+              if (input_buffer_index == 5){
+                x = ((input_buffer[2] - 48) * 100) + ((input_buffer[3] - 48) * 10) + (input_buffer[4] - 48);              
+              } else {
+                x = 0;
+              }
             }
           }
-        }
-        periodic_aos_los_satellite_status = x;
-        if (periodic_aos_los_satellite_status == 0){
-          print_aos_los_satellite_status();
-        }
-        break;
+          periodic_aos_los_satellite_status = x;
+          if (periodic_aos_los_satellite_status == 0){
+            print_aos_los_satellite_status();
+          }
+          break;
 
-      case '~':
-        if (input_buffer_index == 3){
+        case '~':
+          if (input_buffer_index == 3){
           x = (input_buffer[2] - 48);
-        } else {
-          if (input_buffer_index == 4){
-            x = ((input_buffer[2] - 48) * 10) + (input_buffer[3] - 48);
-          } else {
+          }
+          else {
+            if (input_buffer_index == 4){
+              x = ((input_buffer[2] - 48) * 10) + (input_buffer[3] - 48);
+            } else {
             if (input_buffer_index == 5){
               x = ((input_buffer[2] - 48) * 100) + ((input_buffer[3] - 48) * 10) + (input_buffer[4] - 48);              
             } else {
               x = 0;
+              }
             }
           }
-        }
-        periodic_current_satellite_status = x;
-        if (periodic_current_satellite_status == 0){
+          periodic_current_satellite_status = x;
+          if (periodic_current_satellite_status == 0){
           print_current_satellite_status();
-        }
-        break;
+          }
+          break;
 
         case '^':
           switch (input_buffer[2]) {
@@ -15548,7 +15548,6 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
           break;          
 
         case '@':
-          control_port->println(F("TLE file:"));
           print_tle_file_area_eeprom();
           break;
 
@@ -15668,9 +15667,9 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
           break;
 
 
-      #endif //FEATURE_SATELLITE_TRACKING
+    #endif //FEATURE_SATELLITE_TRACKING
 
-      #if defined(FEATURE_AUDIBLE_ALERT)
+    #if defined(FEATURE_AUDIBLE_ALERT)
         case '-':  // audible alert query and control
           if (input_buffer_index == 2){
             control_port->print(F("Audible alerts are "));
@@ -15750,8 +15749,8 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
 
             }
           }
-          break;
-      #endif
+        break;
+    #endif
 
 // TODO : one big status query command    
 
@@ -16190,6 +16189,7 @@ Not implemented yet:
 
     //ZZZZZZ
     #if defined(FEATURE_SATELLITE_TRACKING) || defined(FEATURE_MOON_TRACKING) || defined(FEATURE_SUN_TRACKING)
+      control_port-> println("N5NHJ 1");
       if (input_buffer[2] == 'T'){
         if ((input_buffer[3] == 'S') || (input_buffer[3] == 'U') || (input_buffer[3] == 'M') ||
             (input_buffer[3] == 'X') || (input_buffer[3] == 'Y') || (input_buffer[3] == 'Z'))
