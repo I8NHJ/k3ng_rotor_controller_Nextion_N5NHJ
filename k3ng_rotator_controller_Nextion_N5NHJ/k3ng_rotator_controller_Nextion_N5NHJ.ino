@@ -15492,8 +15492,6 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
         if (periodic_aos_los_satellite_status == 0){
           print_aos_los_satellite_status();
         }
-
-
         break;
 
       case '~':
