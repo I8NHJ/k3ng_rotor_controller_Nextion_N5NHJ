@@ -1211,7 +1211,6 @@
     #include <Wire.h>
     #include <SparkFun_u-blox_GNSS_Arduino_Library.h> //http://librarymanager/All#SparkFun_u-blox_GNSS
   #endif
-
 #endif
 
 #ifdef FEATURE_RTC_DS1307
@@ -1251,12 +1250,9 @@
 #if !defined(HARDWARE_CUSTOM)
   #include "rotator_pins.h"
 #endif
-
 #if defined(az_stepper_motor_direction) || defined(el_stepper_motor_direction)
   #error "az_stepper_motor_direction and el_stepper_motor_direction pins are not supported anymore.  Use rotate_* pins instead."
 #endif
-
-
 #ifdef HARDWARE_WB6KCN_K3NG
   #include "rotator_settings_wb6kcn_k3ng.h"
 #endif
@@ -1272,7 +1268,6 @@
 #if !defined(HARDWARE_CUSTOM)
   #include "rotator_settings.h"
 #endif
-
 #ifdef FEATURE_STEPPER_MOTOR
   #ifdef OPTION_STEPPER_MOTOR_USE_TIMER_ONE_INSTEAD_OF_FIVE
     #include <TimerOne.h>
@@ -1281,22 +1276,17 @@
   #endif
   #if !defined(OPTION_STEPPER_DO_NOT_USE_DIGITALWRITEFAST_LIBRARY)
     #include <digitalWriteFast.h>
+  #endif
 #endif
-#endif
-
 #if !defined(OPTION_USE_OLD_TIME_CODE)
-#if defined(FEATURE_CLOCK)
-  #include <TimeLib.h>
+	#if defined(FEATURE_CLOCK)
+		#include <TimeLib.h>
+	#endif
 #endif
-#endif
-
 
 #include "rotator_language.h"
 #include "rotator_debug.h"
 #include "rotator_debug_log_activation.h"
-
-
-
 
 /*----------------------- variables -------------------------------------*/
 
@@ -1563,7 +1553,6 @@ struct config_t {
   byte sun_visible = 0;
   byte sun_tracking_active = 0;
 #endif // FEATURE_SUN_TRACKING
-
 
 #ifdef FEATURE_CLOCK
 #if defined(OPTION_USE_OLD_TIME_CODE)
@@ -1858,7 +1847,6 @@ struct config_t {
 #endif
 
 
-
 /* ------------------ let's start doing some stuff now that we got the formalities out of the way --------------------*/
 
 void setup() {
@@ -1871,7 +1859,7 @@ void setup() {
 
   read_settings_from_eeprom();
 
-  //// initialize_pins();
+  //// initialize_pins(); // Moved to first line of setup to avoid rotor movement on turning on (VK4GHZ) N5NHJ 
 
   read_azimuth(0);
 
