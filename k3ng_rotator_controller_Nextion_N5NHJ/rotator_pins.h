@@ -10,7 +10,7 @@
 
 /* azimuth pins --------------------- (use just the azimuth pins for an azimuth-only rotator) */
 /* Ethernet board and Mega suggestions */
-/* NEVER USE PIN 10 IF ETHERNET IS ENABLED - N5NHJ */
+/* NEVER USE PIN 10 IF ETHERNET IS ENABLED - N5NHJ (10/11/12/13?)*/
 /* SET PIN 4 TO OUTPUT/HIGH TO DISABLE ON_BOARD SD CARD AND DON'T USE IT FOR ANY INPUT*/
 /* SET PIN 53 AS OUTPUT */
 

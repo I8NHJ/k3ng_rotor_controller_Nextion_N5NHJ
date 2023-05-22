@@ -244,7 +244,7 @@ You can tweak these, but read the online documentation!
 #define ETHERNET_IP_GATEWAY 192,168,1,254
 #define ETHERNET_IP_SUBNET_MASK 255,255,255,0
 #define ETHERNET_TCP_PORT_0 23
-#define ETHERNET_TCP_PORT_1 24
+// #define ETHERNET_TCP_PORT_1 24 N5NHJ Disable 2nd port
 #define ETHERNET_MESSAGE_TIMEOUT_MS 5000
 #define ETHERNET_PREAMBLE "K3NG"    // used only with Ethernet master/slave link
 

@@ -17,7 +17,7 @@
 #define FEATURE_GPS                       //N5NHJ//
 #define FEATURE_RTC_DS1307                //N5NHJ//
 // #define FEATURE_RTC_PCF8583
-//#define FEATURE_ETHERNET                  //N5NHJ//
+#define FEATURE_ETHERNET                  //N5NHJ//
 // #define FEATURE_STEPPER_MOTOR    // Requires TimerFive library to be copied to the Arduino libraries directory (If using OPTION_STEPPER_MOTOR_USE_TIMER_ONE_INSTEAD_OF_FIVE below, copy the TimeOne library)
 // #define FEATURE_AUTOCORRECT
 // #define FEATURE_TEST_DISPLAY_AT_STARTUP  
@@ -118,7 +118,7 @@
 // #define FEATURE_LIMIT_SENSE
 // #define FEATURE_TIMED_BUFFER           // Support for Yaesu timed buffer commands
 // #define OPTION_SERIAL_HELP_TEXT        // Yaesu help command prints help
-#define FEATURE_PARK
+#define FEATURE_PARK // N5NHJ
 // #define FEATURE_AUTOPARK               // Requires FEATURE_PARK
 // #define OPTION_AZ_MANUAL_ROTATE_LIMITS    // this option will automatically stop the L and R commands when hitting a CCW or CW limit (settings are AZ_MANUAL_ROTATE_CCW_LIMIT, AZ_MANUAL_ROTATE_CW_LIMIT) 
 // #define OPTION_EL_MANUAL_ROTATE_LIMITS    // (settings are EL_MANUAL_ROTATE_DOWN_LIMIT, EL_MANUAL_ROTATE_UP_LIMIT)
@@ -138,24 +138,24 @@
 // #define OPTION_BUTTON_RELEASE_NO_SLOWDOWN  // disables slowdown when CW or CCW button is released, or stop button is depressed
 #define OPTION_SYNC_RTC_TO_GPS // if both realtime clock and GPS are present, synchronize realtime clock to GPS
 
-#define OPTION_DISPLAY_STATUS
-#define OPTION_DISPLAY_HEADING
+// #define OPTION_DISPLAY_STATUS
+// #define OPTION_DISPLAY_HEADING
 // #define OPTION_DISPLAY_HEADING_AZ_ONLY
 // #define OPTION_DISPLAY_HEADING_EL_ONLY
 // #define OPTION_DISPLAY_HHMM_CLOCK  // display HH:MM clock  (set position with #define LCD_HHMM_CLOCK_POSITION)
 // #define OPTION_DISPLAY_HHMMSS_CLOCK  // display HH:MM:SS clock  (set position with #define LCD_HHMMSS_CLOCK_POSITION)
 // #define OPTION_DISPLAY_ALT_HHMM_CLOCK_AND_MAIDENHEAD // display alternating HH:MM clock and maidenhead on LCD row 1 (set position with #define LCD_HHMMCLOCK_POSITION)
-#define OPTION_DISPLAY_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD // display constant HH:MM:SS clock and maidenhead on LCD row 1 (set position with #define LCD_CONSTANT_HHMMSSCLOCK_MAIDENHEAD_POSITION)
+// #define OPTION_DISPLAY_CONSTANT_HHMMSS_CLOCK_AND_MAIDENHEAD // display constant HH:MM:SS clock and maidenhead on LCD row 1 (set position with #define LCD_CONSTANT_HHMMSSCLOCK_MAIDENHEAD_POSITION)
 // #define OPTION_DISPLAY_BIG_CLOCK   // display date & time clock (set row with #define LCD_BIG_CLOCK_ROW)
 #define OPTION_CLOCK_ALWAYS_HAVE_HOUR_LEADING_ZERO  //N5NHJ//
-#define OPTION_DISPLAY_GPS_INDICATOR  // display GPS indicator on LCD - set position with LCD_GPS_INDICATOR_POSITION and LCD_GPS_INDICATOR_ROW
+// #define OPTION_DISPLAY_GPS_INDICATOR  // display GPS indicator on LCD - set position with LCD_GPS_INDICATOR_POSITION and LCD_GPS_INDICATOR_ROW
 // #define OPTION_DISPLAY_DIRECTION_STATUS                         // LCD N, W, E, S, NW, etc. direction indicator
 //// #define OPTION_DISPLAY_MOON_TRACKING_CONTINUOUSLY               // LCD
 // #define OPTION_DISPLAY_SATELLITE_TRACKING_CONTINUOUSLY          // LCD
 // #define OPTION_DISPLAY_SATELLITE_TRACKING_ALTERNATING           // LCD
 // #define OPTION_DISPLAY_SUN_TRACKING_CONTINUOUSLY                // LCD
 #define OPTION_DISPLAY_MOON_OR_SUN_OR_SAT_TRACKING_CONDITIONAL  // LCD
-#define OPTION_DISPLAY_VERSION_ON_STARTUP  //code provided by Paolo, IT9IPQ
+// #define OPTION_DISPLAY_VERSION_ON_STARTUP  //code provided by Paolo, IT9IPQ
 // #define OPTION_LCD_HEADING_FIELD_FIXED_DECIMAL_PLACE
 // #define OPTION_REVERSE_AZ_HH12_AS5045
 // #define OPTION_REVERSE_EL_HH12_AS5045
@@ -185,7 +185,7 @@
 // #define OPTION_STEPPER_MOTOR_MAX_2_KHZ
 // #define OPTION_STEPPER_MOTOR_MAX_5_KHZ
 // #define OPTION_STEPPER_MOTOR_MAX_10_KHZ
-#define OPTION_STEPPER_MOTOR_MAX_20_KHZ
+// #define OPTION_STEPPER_MOTOR_MAX_20_KHZ
 
 //#define OPTION_STEPPER_DO_NOT_USE_DIGITALWRITEFAST_LIBRARY
 
