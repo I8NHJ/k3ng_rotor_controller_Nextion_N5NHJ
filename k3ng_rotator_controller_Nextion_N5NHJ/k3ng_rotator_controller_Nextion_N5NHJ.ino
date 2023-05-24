@@ -1884,24 +1884,15 @@ void loop() {
   #endif // DEBUG_LOOP
 
   #if defined(FEATURE_CLOCK) && defined(OPTION_USE_OLD_TIME_CODE)
-    // control_port->println("N5NHJ Time 1 IN");
     update_time();
-    // control_port->println("N5NHJ Time 1 OUT");
   #endif
 
   service_process_debug(DEBUG_PROCESSES_SERVICE,0);
 
-  // control_port->println("N5NHJ Serial 1 IN");
   check_serial();
-  // control_port->println("N5NHJ Serial 1 OUT");
   read_headings();
-
-  // control_port->println("N5NHJ REQUEST 1 IN");
   service_request_queue();
-  //  control_port->println("N5NHJ Request 1 OUT");
-  //    control_port->println("N5NHJ Rotation 1 IN");
   service_rotation();
-  //  control_port->println("N5NHJ Rotation 1 OUT");
   az_check_operation_timeout();
   #ifdef FEATURE_TIMED_BUFFER
     check_timed_interval();
@@ -1932,7 +1923,6 @@ void loop() {
 
   #if defined(FEATURE_NEXTION_DISPLAY)
     service_nextion_display();
-	  //  control_port->println("N5NHJ Nextion 1");
   #endif
 
   #ifdef OPTION_MORE_SERIAL_CHECKS
@@ -1964,12 +1954,11 @@ void loop() {
   #endif
 
   read_headings();
-  //  control_port->println("N5NHJ headings 1");
 
   service_rotation();
 
   check_for_dirty_configuration();
-  //  control_port->println("N5NHJ Config 1");
+
   #ifdef DEBUG_PROFILE_LOOP_TIME
     profile_loop_time();
   #endif //DEBUG_PROFILE_LOOP_TIME
@@ -1992,7 +1981,6 @@ void loop() {
 
   #if defined(FEATURE_PARK)
     service_park();
-	  //  control_port->println("N5NHJ Park 1");
     #if defined(FEATURE_AUTOPARK)
       service_autopark();
     #endif
@@ -2004,12 +1992,10 @@ void loop() {
 
   #ifdef FEATURE_MOON_TRACKING
     service_moon_tracking();
-	  //  control_port->println("N5NHJ Moon 1");
   #endif // FEATURE_MOON_TRACKING
 
   #ifdef FEATURE_SUN_TRACKING
     service_sun_tracking();
-	  //  control_port->println("N5NHJ Sun 1");
   #endif // FEATURE_SUN_TRACKING
 
   #ifdef OPTION_MORE_SERIAL_CHECKS
@@ -2018,18 +2004,14 @@ void loop() {
 
   #ifdef FEATURE_GPS
     service_gps();
-	  //  control_port->println("N5NHJ GPS 1");
   #endif // FEATURE_GPS
 
   read_headings();
-    //  control_port->println("N5NHJ Headings 2");
 
   service_rotation();
-    //  control_port->println("N5NHJ Rotation 1");
- 
+
   #ifdef FEATURE_RTC
     service_rtc();
-	  //  control_port->println("N5NHJ RTC 1");
   #endif // FEATURE_RTC
 
   #ifdef OPTION_MORE_SERIAL_CHECKS
@@ -2037,9 +2019,7 @@ void loop() {
   #endif
 
   #ifdef FEATURE_ETHERNET
-  	//    control_port->println("N5NHJ Ethernet 1 IN");
     service_ethernet();
-	  //  control_port->println("N5NHJ Ethernet 1 OUT");
   #endif // FEATURE_ETHERNET
 
   #ifdef FEATURE_POWER_SWITCH
@@ -2075,7 +2055,6 @@ void loop() {
 
   #if defined(FEATURE_AUDIBLE_ALERT)
     audible_alert(AUDIBLE_ALERT_SERVICE);
-	  //  control_port->println("N5NHJ Alert 1");
   #endif //FEATURE_AUDIBLE_ALERT
   
   #if defined(pin_status_led)
@@ -2084,9 +2063,7 @@ void loop() {
 
   #if defined(FEATURE_SATELLITE_TRACKING)
     service_satellite_tracking(0,0);
-	  //  control_port->println("N5NHJ Sat Track 1");
     service_calc_satellite_data(0,0,0,SERVICE_CALC_DO_NOT_PRINT_HEADER,SERVICE_CALC_SERVICE,SERVICE_CALC_DO_NOT_PRINT_DONE,0);
-		  //  control_port->println("N5NHJ Sat Track 2");
     //service_calculate_multi_satellite_upcoming_aos_and_los(SERVICE_CALC_SERVICE);
   #endif
 
@@ -3599,15 +3576,12 @@ void check_serial(){
           if ((control_port_buffer[0] == '\\') || (control_port_buffer[0] == '/')) {
             received_backslash = 0;
             control_port->println();
-		  // control_port->println("N5NHJ TEST 1 IN");
             process_backslash_command(control_port_buffer, control_port_buffer_index, CONTROL_PORT0, INCLUDE_RESPONSE_CODE, return_string, SOURCE_CONTROL_PORT);
-			// control_port->println("N5NHJ TEST 1 OUT 1");
             #if defined(FEATURE_LCD_DISPLAY)
               perform_screen_redraw = 1;
             #endif            
           } else {
             #ifdef FEATURE_YAESU_EMULATION
-			//  control_port->println("N5NHJ YAESU 1 IN");
               process_yaesu_command(control_port_buffer,control_port_buffer_index,CONTROL_PORT0,return_string);
               #if defined(FEATURE_LCD_DISPLAY)
                 perform_screen_redraw = 1;
@@ -3615,17 +3589,14 @@ void check_serial(){
             #endif //FEATURE_YAESU_EMULATION
 
             #ifdef FEATURE_REMOTE_UNIT_SLAVE
-				//	  control_port->println("N5NHJ UNIT SLAVE 1");
               process_remote_slave_command(control_port_buffer,control_port_buffer_index,CONTROL_PORT0,return_string);
             #endif //FEATURE_REMOTE_UNIT_SLAVE
           }  
           control_port->println(return_string);
           clear_command_buffer();
-		  //control_port->println("N5NHJ TEST 1 OUT 2");
         }
 
     #endif //defined(FEATURE_YAESU_EMULATION) || defined(FEATURE_REMOTE_UNIT_SLAVE)
-//control_port->println("N5NHJ TEST POINT 10");
     #if defined(FEATURE_DCU_1_EMULATION)  
       if (incoming_serial_byte == ';'){  // either a ';' stop rotation command, or as a command terminator
         if (control_port_buffer_index == 0){  // we received just a ; (stop rotation)
@@ -14588,7 +14559,6 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
   byte brake_az_disabled;
 
   char temp_string[20] = "";
-  // control_port->println("N5NHJ SWTICH IN");
   switch (input_buffer[1]) {
   #if !defined(OPTION_SAVE_MEMORY_EXCLUDE_BACKSLASH_CMDS)
   #if defined(FEATURE_AZ_POSITION_ROTARY_ENCODER) || defined(FEATURE_AZ_POSITION_PULSE_INPUT) || defined(FEATURE_AZ_POSITION_ROTARY_ENCODER_USE_PJRC_LIBRARY)
@@ -15483,8 +15453,6 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
       // control_port->println(F("satellite_array_data_ready = 0"));
       // break;
         case '|':
-          // control_port->println("N5NHJ case | 1 IN");
-          // Serial.println (input_buffer_index);
           if (input_buffer_index == 3){
             x = (input_buffer[2] - 48);
           } else {
@@ -15498,16 +15466,12 @@ byte process_backslash_command(byte input_buffer[], int input_buffer_index, byte
               }
             }
           }
-          // Serial.println ("N5NHJ 1");
           periodic_aos_los_satellite_status = x;
-          // Serial.print ("N5NHJ 2 ");
           if (periodic_aos_los_satellite_status == 0){
-          //  Serial.println (String(x));
              print_aos_los_satellite_status();
-          //Serial.println ("N5NHJ Case | exit");
           }
           else {
-            Serial.print ("X");
+            // Serial.print ("X"); N5NHJ
           }
           break;
 
@@ -17046,8 +17010,8 @@ Not implemented yet:
   void print_aos_los_satellite_status(){  
 
     if (periodic_aos_los_satellite_status){
-    //  send_vt100_code((char*)VT100_CLEAR_SCREEN); // N5NHJ
-    //  send_vt100_code((char*)VT100_CURSOR_UPPER_LEFT_CORNER); //N5NHJ
+      send_vt100_code((char*)VT100_CLEAR_SCREEN);
+      send_vt100_code((char*)VT100_CURSOR_UPPER_LEFT_CORNER);
     }
 
     control_port->print(F("    Sat           Az    El       Lat  Long           Next AOS                Next LOS          Max El\t"));
@@ -17069,10 +17033,7 @@ Not implemented yet:
       //2021-10-08 Goody - added this to lessen GPS failed_checksum
       check_serial();
     }
-
     control_port->println();
-    Serial.println ("N5NHJ Sat print exit");
-
   }
 #endif //FEATURE_SATELLITE_TRACKING
 //-----------------------------------------------------------------------
