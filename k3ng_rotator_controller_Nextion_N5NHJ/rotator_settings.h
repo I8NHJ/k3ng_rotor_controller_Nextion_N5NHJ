@@ -16,7 +16,7 @@
             \Q - Save settings in the EEPROM and restart            
 */   
                                                 
-#define ELEVATION_MAXIMUM_DEGREES 180           // change this to set the maximum elevation in degrees
+#define ELEVATION_MAXIMUM_DEGREES 187 // 180 N5NHJ           // change this to set the maximum elevation in degrees
 
 /* --------------------------- Settings ------------------------------------------------
 
@@ -94,8 +94,8 @@ You can tweak these, but read the online documentation!
 #define AZ_MANUAL_ROTATE_CW_LIMIT 535  // add 360 to this if you go past 0 degrees (i.e. 180 CW after 0 degrees = 540)
 
 // Settings for OPTION_EL_MANUAL_ROTATE_LIMITS
-#define EL_MANUAL_ROTATE_DOWN_LIMIT -1
-#define EL_MANUAL_ROTATE_UP_LIMIT 181
+#define EL_MANUAL_ROTATE_DOWN_LIMIT 0 //-1 N5NHJ
+#define EL_MANUAL_ROTATE_UP_LIMIT 187 // 181 N5NHJ
 
 // Speed pot settings
 #define SPEED_POT_LOW 0
@@ -286,7 +286,7 @@ You can tweak these, but read the online documentation!
 //#define ELEVATION_CALIBRATION_FROM_ARRAY {0,180,360}
 //#define ELEVATION_CALIBRATION_TO_ARRAY {180,0,-180}
 
-#define ANALOG_OUTPUT_MAX_EL_DEGREES 180
+#define ANALOG_OUTPUT_MAX_EL_DEGREES 187 // 180 N5NHJ
 
 #define EL_POSITION_PULSE_DEBOUNCE 500  // in ms
 
